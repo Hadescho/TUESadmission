@@ -18,7 +18,7 @@ class RecordTypesController < ApplicationController
   def create
     @record_type = RecordType.new(params[:product_type])
     if @record_type.save
-      redirect_to @record_type , notice: 'Успешно създаден запис'
+      redirect_to @record_type
     else
       render action: "new"
     end
@@ -27,9 +27,7 @@ class RecordTypesController < ApplicationController
   def update
     @record_type = RecordType.find(params[:id])
     if @record_type.update_attributes(params[:product_type])
-      flash[:success] = "Успешно обновихте записа"
     else
-      flash[:alert] = "Имахме проблем с обновяването на записа"
       @record_type.errors.each do |err|
         flash[:alert] += err
       end

@@ -18,19 +18,17 @@ class RecordsController < ApplicationController
   def create
     @record = Record.new(params[:record])
     if @record.save
-      redirect_to @product, notice 'Записът бе запазен успешно'
+      redirect_to @product
     else
       render action: "new"
-      flash[:alert] = "Записът не бе запазен успешно. Моля опитайте отново."
   end
 
   def update
     @record = Record.find(params[:id])
     if @record.updata_attributes(params[:reocrd])
-      redirect_to @record, notice: 'Записът бе успешно обновен.'
+      redirect_to @record
     else
       render action: "edit"
-      flash[:alert]= "Записът не бе успешно обновен. Моля опитайте отново"
   end
 
   def destroy
