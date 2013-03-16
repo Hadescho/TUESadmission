@@ -1,4 +1,19 @@
 Admission::Application.routes.draw do
+  get "records/index"
+
+  get "records/show"
+
+  get "records/edit"
+
+  get "records/new"
+
+  get "records/create"
+
+  get "records/update"
+
+  get "records/destroy"
+
+  resources :records, :record_types
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
