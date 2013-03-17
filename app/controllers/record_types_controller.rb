@@ -16,7 +16,7 @@ class RecordTypesController < ApplicationController
   end
 
   def create
-    @record_type = RecordType.new(params[:product_type])
+    @record_type = RecordType.new(params[:record_type])
     if @record_type.save
       redirect_to @record_type
     else
@@ -26,7 +26,7 @@ class RecordTypesController < ApplicationController
 
   def update
     @record_type = RecordType.find(params[:id])
-    if @record_type.update_attributes(params[:product_type])
+    if @record_type.update_attributes(params[:record_type])
     else
       @record_type.errors.each do |err|
         flash[:alert] += err

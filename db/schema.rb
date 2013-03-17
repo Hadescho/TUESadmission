@@ -11,7 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130316085347) do
+ActiveRecord::Schema.define(:version => 20130316114019) do
+
+  create_table "record_fields", :force => true do |t|
+    t.string   "name"
+    t.string   "field_type"
+    t.boolean  "required"
+    t.integer  "record_type_id"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  add_index "record_fields", ["record_type_id"], :name => "index_record_fields_on_record_type_id"
 
   create_table "record_types", :force => true do |t|
     t.datetime "created_at", :null => false
@@ -21,8 +32,10 @@ ActiveRecord::Schema.define(:version => 20130316085347) do
 
   create_table "records", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.integer  "record_type_id"
+    t.text     "properties"
   end
 
 end

@@ -1,2 +1,13 @@
-<h1>Records#index</h1>
-<p>Find me in app/views/records/index.html.erb</p>
+<h1>Записи</h1>
+
+<% if @records.empty? %>
+	<p><strong>Няма записи</strong></p>
+<% else %>
+	<% @records.each do |rec| %>
+		<h2><% rec.name %></h2>
+	<% end %>
+<% end %>
+<%= form_tag new_record_path, method: :get do %>
+	<%= select_tag :record_type_id, options_from_collection_for_select(RecordType.all, :id, :name) %>
+	<%= submit_tag "Нов запис", name: nil %>
+<% end %>

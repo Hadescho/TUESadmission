@@ -1,0 +1,12 @@
+<%= form_for @record do |f| %>
+
+  <%= f.hidden_field :record_type_id %>
+  Име на записа: <%= f.text_field :name %>
+
+  <%= f.fields_for :properties, OpenStruct.new(@record.properties) do |builder| %>
+ 	<% @record.record_type.fields.each do |field| %>
+  		<%= render "records/#{field.field_type}", field: field, f:builder %>
+  	<% end %>
+  <% end %>
+  <%= f.submit %>
+<% end %>

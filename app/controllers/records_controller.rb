@@ -12,15 +12,21 @@ class RecordsController < ApplicationController
   end
 
   def new
-    @record = Record.new(record_type_id: params[:record_type_id])
+    @record = Record.new
+    @record.record_type_id = params[:record_type_id]
   end
 
   def create
-    @record = Record.new(params[:record])
+    @record = Record.new
+    @record.record_type_id = params[:record][:record_type_id]
+    @record.name = params[:record][:name]
+    @record.properties = params[:record][:properties]
     if @record.save
-      redirect_to @product
+      redirect_to :root
     else
       render action: "new"
+      render "params"
+    end
   end
 
   def update
@@ -29,11 +35,12 @@ class RecordsController < ApplicationController
       redirect_to @record
     else
       render action: "edit"
+    end
   end
 
   def destroy
     @record = Record.find(params[:id])
     @record.destroy
-    redirect_to records_url
   end
+
 end

@@ -1,5 +1,15 @@
 class Record < ActiveRecord::Base
-  attr_accessible :name
+  attr_accessible :name, :record_type_id, :properties
+  belongs_to :record_type
+  serialize :properties, Hash
+  validate :validate_properties
 
-  validates :name, presence:true
+
+  def validate_properties
+  	record_type.fields.each do |field|
+  		if field.required 
+        errors.add field.name, "ne trqbva da e prazno (Zashto ne dava simvoli razlichni ot US-ASCII ?!?)"
+  		end
+  	end
+  end
 end
