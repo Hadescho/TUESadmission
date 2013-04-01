@@ -1,7 +1,7 @@
 Admission::Application.routes.draw do
   resources :records, :record_types
   
-  root to:"record_types#index"
+  root to:"records#index"
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
