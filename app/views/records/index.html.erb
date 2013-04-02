@@ -3,11 +3,17 @@
 <% if @records.empty? %>
 	<p><strong>Няма записи</strong></p>
 <% else %>
-	<% @records.each do |rec| %>
-		<h2><% rec.name %></h2>
-	<% end %>
+	<table>
+
+		<% @records.each do |rec| %>
+		<tr>
+			<td><%= rec.name %></td>
+		</tr>
+		<% end %>
+	</table>
 <% end %>
-<%= form_tag new_record_path, method: :get do %>
-	<%= select_tag :record_type_id, options_from_collection_for_select(RecordType.all, :id, :name) %>
+<%= form_tag new_campaign_record_path, method: :get do %>
+	<%= select_tag :record_type_id, 
+			options_from_collection_for_select(RecordType.all, :id, :name) %>
 	<%= submit_tag "Нов запис", name: nil %>
 <% end %>

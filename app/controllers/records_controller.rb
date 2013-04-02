@@ -1,3 +1,4 @@
+#encoding: UTF-8
 class RecordsController < ApplicationController
   def index
     @records = Record.all
@@ -14,6 +15,7 @@ class RecordsController < ApplicationController
   def new
     @record = Record.new
     @record.record_type_id = params[:record_type_id]
+    @record.campaign_id = params[:campaign_id]
   end
 
   def create
@@ -22,10 +24,10 @@ class RecordsController < ApplicationController
     @record.name = params[:record][:name]
     @record.properties = params[:record][:properties]
     if @record.save
-      redirect_to :root
+      redirect_to @record
     else
       render action: "new"
-      render "params"
+      flash[:alert] = "Записът не бе създанен успешно. Моля опитайте отново."
     end
   end
 

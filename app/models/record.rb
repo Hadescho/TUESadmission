@@ -10,7 +10,7 @@ class Record < ActiveRecord::Base
   def validate_properties
   	record_type.fields.each do |field|
   		if field.required 
-        errors.add field.name, "ne trqbva da e prazno (Zashto ne dava simvoli razlichni ot US-ASCII ?!?)"
+        errors.add field.name, "не трябва да е празно"
   		end
   	end
   end
