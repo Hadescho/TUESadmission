@@ -1,6 +1,6 @@
 #encoding: UTF-8
 class Record < ActiveRecord::Base
-  attr_accessible :name, :record_type_id, :properties
+  attr_accessible :name, :record_type_id, :properties, :campaign_id
   belongs_to :record_type
   belongs_to :campaign
   serialize :properties, Hash

@@ -11,7 +11,12 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130402080939) do
+ActiveRecord::Schema.define(:version => 20130410083048) do
+
+  create_table "CampaignRecordRelations", :force => true do |t|
+    t.integer "campaign_id"
+    t.integer "record_id"
+  end
 
   create_table "campaigns", :force => true do |t|
     t.string   "name"

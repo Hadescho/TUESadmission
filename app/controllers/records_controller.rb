@@ -1,7 +1,7 @@
 #encoding: UTF-8
 class RecordsController < ApplicationController
   def index
-    @records = Record.all
+    @records = Campaign.find(params[:campaign_id]).records.all
   end
 
   def show
@@ -13,13 +13,13 @@ class RecordsController < ApplicationController
   end
 
   def new
-    @record = Record.new
+    @campaign = Campaign.find(params[:campaign_id])
+    @record = @campaign.records.new
     @record.record_type_id = params[:record_type_id]
-    @record.campaign_id = params[:campaign_id]
   end
 
   def create
-    @record = Record.new
+    @record = Campaign.find(params[:campaign_id]).records.new
     @record.record_type_id = params[:record][:record_type_id]
     @record.name = params[:record][:name]
     @record.properties = params[:record][:properties]
@@ -33,7 +33,7 @@ class RecordsController < ApplicationController
 
   def update
     @record = Record.find(params[:id])
-    if @record.updata_attributes(params[:reocrd])
+    if @record.updata_attributes(params[:record])
       redirect_to @record
     else
       render action: "edit"

@@ -1,0 +1,7 @@
+<%= form_for @campaign do |f| %>
+	<ul>
+		<li>Име: 	  <%= f.text_field :name %></li>
+		<li>Описание: <%= f.text_area :description%></li>
+	</ul>
+	<%= f.submit %>
+<% end %>
