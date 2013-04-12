@@ -11,18 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130410083048) do
-
-  create_table "CampaignRecordRelations", :force => true do |t|
-    t.integer "campaign_id"
-    t.integer "record_id"
-  end
+ActiveRecord::Schema.define(:version => 20130412141151) do
 
   create_table "campaigns", :force => true do |t|
     t.string   "name"
     t.text     "description"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+  end
+
+  create_table "campaigns_records", :force => true do |t|
+    t.integer "campaign_id"
+    t.integer "record_id"
   end
 
   create_table "record_fields", :force => true do |t|
