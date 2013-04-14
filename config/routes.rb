@@ -1,5 +1,7 @@
 Admission::Application.routes.draw do
  
+  devise_for :users
+
   resources :record_types
   resources :campaigns do
     resources :records
