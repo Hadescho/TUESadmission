@@ -35,11 +35,11 @@ class CampaignsController < ApplicationController
     @campaign = Campaign.find(params[:id])
     temp = Record.new(params[:campaign][:records])
     @campaign.records<< temp
-    params[:campaign][:records] = nil
     @campaign.name = params[:campaign][:name]
     @campaign.description = params[:campaign][:description]
     if @campaign.save()
       flash[:success] = "Кампанията бе успешно обновлена"
+      redirect_to :root
     else
       flash[:alert] = "Кампанията не бе успешно обновлена. Моля опитайте отново"
     end

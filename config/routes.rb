@@ -5,7 +5,7 @@ Admission::Application.routes.draw do
     resources :records
   end
 
-  root to:"records#index"
+  root to:"campaigns#show"
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
