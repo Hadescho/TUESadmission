@@ -5,8 +5,10 @@
 		<th>Изтрии</th>
 	</thead>
 	<% @campaigns.each do |c| %>
-		<td><%= c.name %></td>
-		<td><%= c.description %></td>
-		<td><%= link_to "Изтрии", "campaigns/#{c.id}" , method:"delete" %></td>
+		<tr>
+			<td><%= c.name %></td>
+			<td><%= c.description %></td>
+			<td><%= link_to "Изтрии", "campaigns/#{c.id}" , method:"delete" %></td>
+		</tr>
 	<% end %>
 </table>

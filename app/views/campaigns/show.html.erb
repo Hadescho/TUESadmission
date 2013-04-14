@@ -1,2 +1,23 @@
-<h1>Campaigns#show</h1>
-<p>Find me in app/views/campaigns/show.html.erb</p>
+<table>
+	<thead>
+		<td>ID</td>
+		<% @campaign.records.first.properties.each_key do |propertie|%>
+		<td><%= propertie %></td>
+		<% end %>
+		<td>Редактирай</td>
+		<td>Изтрий</td>
+	</thead>
+	<tbody>
+		<% @campaign.records.each do |record| %>
+		<tr>
+			<td><%= record.id %> </td>
+			<% record.properties.each_value do |value| %>
+			<td><%= value %></td>
+			<% end %>
+			<td><%= link_to "Редактирай", edit_campaign_record_path(record) %></td>
+			<td><%= link_to "Изтрий", "/campaigns/#{params[:id]}/records/#{record.id}",  method: :delete%>
+		</tr>
+		<% end %>
+	</tbody>
+
+</table>
