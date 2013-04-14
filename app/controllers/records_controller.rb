@@ -1,5 +1,8 @@
 #encoding: UTF-8
 class RecordsController < ApplicationController
+
+  before_filter :authenticate_user!
+
   def index
     @records = Campaign.find(params[:campaign_id]).records.all
   end

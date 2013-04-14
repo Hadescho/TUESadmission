@@ -10,11 +10,18 @@
 <body>
 	<p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-
+    <div class="user_auth" style="float:right">
+    	<%if user_signed_in? %>
+    		<%= link_to "Излезте от профила си", destroy_user_session_path, method: :delete%>
+    	<% else %>
+    		<%= link_to "Влезте в профила си", new_user_session_path %>
+    	<% end %>
+    </div>
 
 <%= yield %>
 
 
 <p>WARNING : config.active_record.whitelist_attributes is set to false ! </p>
+
 </body>
 </html>
