@@ -12,7 +12,9 @@ class RecordsController < ApplicationController
   end
 
   def edit
-    @record = Record.find(params[:id])
+    @record = Record.find(params[:campaign_id])
+    @campaign = Campaign.find(params[:id])
+    
   end
 
   def new
