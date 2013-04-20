@@ -11,6 +11,6 @@ module ApplicationHelper
   end
 
   def calculate_bal record
-  	record.properties.update(bal: (record.properties["Математика - училище"].to_f + record.properties["Физика - училище"] + 2*record.properties["Математика - изпит"]+ 2*record.properties["Български - изпит"]))
+  	record.properties.update(bal: (record.properties["Математика - училище".to_sym].to_f + record.properties["Физика - училище".to_sym].to_f + 2*record.properties["Математика - изпит".to_sym].to_f + 2*record.properties["Български - изпит".to_sym].to_f))
   end
 end
