@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class RecordType < ActiveRecord::Base
    attr_accessible :name, :fields_attributes
    has_many :fields, class_name: "RecordField"

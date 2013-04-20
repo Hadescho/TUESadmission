@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CreateCampaignsRecords < ActiveRecord::Migration
   def change
   	create_table :campaigns_records do |t|

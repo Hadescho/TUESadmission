@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddTypeToRecords < ActiveRecord::Migration
   def change
     add_column :records, :record_type_id, :integer

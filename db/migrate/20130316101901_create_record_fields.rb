@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CreateRecordFields < ActiveRecord::Migration
   def change
     create_table :record_fields do |t|

@@ -27,6 +27,7 @@ group :development do
 end
 gem 'devise'
 gem 'faker'
+gem 'magic_encoding'
 gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password

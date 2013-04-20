@@ -1,3 +1,5 @@
+# -*- encoding : utf-8 -*-
+#encoding UTF-8
 module ApplicationHelper
   def link_to_add_fields(name, f, association)
     new_object = f.object.send(association).klass.new
@@ -6,5 +8,9 @@ module ApplicationHelper
       render(association.to_s.singularize + "_fields", f: builder)
     end
     link_to(name, '#', class: "add_fields", data: {id: id, fields: fields.gsub("\n", "")})
+  end
+
+  def calculate_bal record
+  	record.properties.update(bal: (record.properties["Математика - училище"].to_f + record.properties["Физика - училище"] + 2*record.properties["Математика - изпит"]+ 2*record.properties["Български - изпит"]))
   end
 end

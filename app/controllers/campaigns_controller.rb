@@ -1,4 +1,4 @@
-#encoding: UTF-8
+# -*- encoding : utf-8 -*-
 class CampaignsController < ApplicationController
 
   before_filter :authenticate_user!
