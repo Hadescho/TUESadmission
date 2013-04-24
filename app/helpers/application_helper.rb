@@ -11,6 +11,20 @@ module ApplicationHelper
   end
 
   def calculate_bal record
-  	record.properties.update(bal: (record.properties["Математика - училище".to_sym].to_f + record.properties["Физика - училище".to_sym].to_f + 2*record.properties["Математика - изпит".to_sym].to_f + 2*record.properties["Български - изпит".to_sym].to_f))
+  	record.properties.update(bal: ((record.properties["Математика - училище".to_sym].to_f + record.properties["Физика - училище".to_sym].to_f + 2*record.properties["Математика - изпит".to_sym].to_f + 2*record.properties["Български - изпит".to_sym].to_f).to_s))
   end
+
+  def bal_aligment campaign
+    records_array = campaign.records.all
+    records_array.each do |r|
+      if !r.properties.key? :bal
+        calculate_bal r
+        r.save
+      end
+      r.properties["bal"] = r.properties["bal"].to_f
+    end
+
+    records_array.sort_by {|r| r.properties[:bal]}.reverse
+  end
+  
 end

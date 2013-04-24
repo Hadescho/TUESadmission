@@ -6,7 +6,6 @@ class Record < ActiveRecord::Base
   belongs_to :campaign
   serialize :properties, Hash
   #validate :validate_properties
-  validate :validate_no_whitespaces
 
 
   #def validate_properties
@@ -17,11 +16,4 @@ class Record < ActiveRecord::Base
   #	end
   #end
 
-  def validate_no_whitespaces
-    properties.each do |key, val|
-      if !val.match(/^\S*$/)
-        errors.add key , "не трябва да има разстояния"
-      end
-    end
-  end
 end
