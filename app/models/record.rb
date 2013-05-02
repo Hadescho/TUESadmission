@@ -16,4 +16,8 @@ class Record < ActiveRecord::Base
   #	end
   #end
 
+  def calculate_bal
+    self.properties.update(bal: ((self.properties["Математика - училище".to_sym].to_f + self.properties["Физика - училище".to_sym].to_f + 2*self.properties["Математика - изпит".to_sym].to_f + 2*self.properties["Български - изпит".to_sym].to_f).to_s))
+  end
+
 end

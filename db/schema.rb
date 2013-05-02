@@ -1,4 +1,4 @@
-# -*- encoding : utf-8 -*-
+# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130414160631) do
+ActiveRecord::Schema.define(:version => 20130502064854) do
 
   create_table "CampaignRecordRelations", :force => true do |t|
     t.integer "campaign_id"
@@ -31,6 +31,11 @@ ActiveRecord::Schema.define(:version => 20130414160631) do
   end
 
   create_table "campaigns_records", :force => true do |t|
+    t.integer "campaign_id"
+    t.integer "record_id"
+  end
+
+  create_table "cn_records", :force => true do |t|
     t.integer "campaign_id"
     t.integer "record_id"
   end
@@ -59,6 +64,11 @@ ActiveRecord::Schema.define(:version => 20130414160631) do
     t.integer  "record_type_id"
     t.text     "properties"
     t.integer  "campaign_id"
+  end
+
+  create_table "sp_records", :force => true do |t|
+    t.integer "campaign_id"
+    t.integer "record_id"
   end
 
   create_table "users", :force => true do |t|

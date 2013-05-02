@@ -47,4 +47,6 @@ class CampaignsController < ApplicationController
       flash[:alert] = "Кампанията не бе успешно обновлена. Моля опитайте отново"
     end
   end
+
+  
 end
