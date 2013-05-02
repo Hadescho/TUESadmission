@@ -18,4 +18,34 @@ class Campaign < ActiveRecord::Base
 
 	    records_array.sort_by {|r| r.properties[:bal]}.reverse
  	end
+
+ 	def specialties_aligment
+ 		records_array = bal_aligment
+ 		puts "============================ #{record_array.size} ==================================="
+ 		records_array.each do |r|
+ 			if r.properties["Желание1".to_sym].to_i == 1 && sp_container.size < 29
+ 				puts "------------------------------- Vliza v Jelanie 1 sp ---------------------------"
+ 				sp_container<< r
+ 				records_array.delete_if {|x| x == r}
+ 			elsif r.properties["Желание1".to_sym].to_i == 2 && cn_container.size < 29
+ 				puts "------------------------------- Vliza v Jelanie 1 cn ---------------------------"
+ 				cn_container<< r
+ 				records_array.delete_if {|x| x == r}
+ 			elsif r.properties["Желание2".to_sym].to_i == 1 && sp_container.size < 29
+ 				puts "------------------------------- Vliza v Jelanie 2 sp ---------------------------"
+ 				sp_container<< r
+ 				records_array.delete_if {|x| x == r}
+ 			elsif r.properties["Желание2".to_sym].to_i == 2 && cn_container.size < 29
+ 				puts "------------------------------- Vliza v Jelanie 2 cn ---------------------------"
+ 				cn_container<< r
+ 				records_array.delete_if {|x| x == r}
+ 			end
+ 		end
+ 		self.save	
+ 	end
+
+
 end
+
+
+# SP = 1 / CN = 2
