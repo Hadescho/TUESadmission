@@ -42,7 +42,7 @@ class RecordsController < ApplicationController
     if @record.updata_attributes(params[:record])
       redirect_to @record
     else
-      render action: "edit"
+      render status: 500
     end
   end
 

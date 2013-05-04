@@ -8,8 +8,9 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 </head>
 <body>
-	<p class="notice"><%= notice %></p>
+    <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
+
     <div class="user_auth" style="float:right">
     	<%if user_signed_in? %>
     		Логнат сте като: <%= current_user.email %>
@@ -19,6 +20,11 @@
     	<% end %>
     </div>
 
+    <div class="campaign_select" style="float:center">
+    <% campaigns_names = []; campaigns_ids = [] %>
+    <% Campaign.all.each {|c| campaigns_names<< [c.name,c.id]} %>
+            <%= select_tag "campaigns", options_for_select(campaigns_names,campaigns_ids), onchange:"document.location = '/campaigns/' + this.value" %>
+    </div>
 <%= yield %>
 
 
