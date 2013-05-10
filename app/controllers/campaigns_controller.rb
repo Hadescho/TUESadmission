@@ -9,6 +9,9 @@ class CampaignsController < ApplicationController
 
   def new
     @campaign = Campaign.new
+    @record_types = []
+    RecordType.all.each { |rt| @record_types<< [rt.name,rt.id]}
+
   end
 
   def create

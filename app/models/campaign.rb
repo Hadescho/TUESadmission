@@ -1,9 +1,10 @@
 # -*- encoding : utf-8 -*-
 class Campaign < ActiveRecord::Base
-	attr_accessible :description, :name, :records
+	attr_accessible :description, :name, :records, :record_type_id
 	has_and_belongs_to_many :records
 	has_and_belongs_to_many :sp_container, class_name:"Record", join_table: :sp_records
 	has_and_belongs_to_many :cn_container, class_name:"Record", join_table: :cn_records
+
 
 	
 	def bal_aligment 

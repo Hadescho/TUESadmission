@@ -2,6 +2,7 @@
 	<ul>
 		<li>Име: 	  <%= f.text_field :name %></li>
 		<li>Описание: <%= f.text_area :description%></li>
+		<li>Тип на записите: <%= f.select :record_type_id, options_for_select(  @record_types)%></li>
 	</ul>
 	<%= f.submit %>
 <% end %>

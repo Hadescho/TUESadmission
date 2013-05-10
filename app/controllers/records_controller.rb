@@ -19,8 +19,9 @@ class RecordsController < ApplicationController
 
   def new
     @campaign = Campaign.find(params[:campaign_id])
-    @record = @campaign.records.new
-    @record.record_type_id = params[:record_type_id]
+    @record = Record.new
+    @record.record_type_id = @campaign.record_type_id
+    @campaign.records << @record
   end
 
   def create
