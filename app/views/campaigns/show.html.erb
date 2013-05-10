@@ -4,6 +4,7 @@
 		<% @campaign.records.first.properties.each_key do |propertie|%>
 		<td><%= propertie %></td>
 		<% end %>
+		<td>Профил</td>
 		<td>Редактирай</td>
 		<td>Изтрий</td>
 	</thead>
@@ -14,6 +15,7 @@
 			<% record.properties.each_value do |value| %>
 			<td><%= value %></td>
 			<% end %>
+			<td><%= link_to "Профил", campaign_record_path(campaign_id: @campaign.id, id: record.id), method: :get %></td>
 			<td><%= link_to "Редактирай", edit_campaign_record_path(campaign_id: @campaign.id, id: record.id) %></td>
 			<td><%= link_to "Изтрий", campaign_record_path(campaign_id: @campaign.id, id: record.id),  method: :delete, confirm: "Сигурни ли сте?"%>
 		</tr>

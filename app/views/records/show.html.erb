@@ -1,1 +1,23 @@
+<table>
+	<tr>
+		<td>
+		<!-- Image of the student -->
+		</td>
+		<td>
+			<table>
+				<% @record.properties.each do |key,value| %>
+				<tr>
+					<td>
+						<%= key %>:
+					</td>
+					<td>
+						<%= value %>
+					</td>
+				</tr>
+				<% end %>
+			</table>
+		</td>
+	</tr>
 
+
+</table>
