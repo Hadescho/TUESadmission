@@ -1,5 +1,5 @@
 # -*- encoding : utf-8 -*-
-#encoding: UTF-8
+
 class Record < ActiveRecord::Base
   attr_accessible :name, :record_type_id, :properties, :campaign_id
   belongs_to :record_type

@@ -13,9 +13,8 @@ class RecordsController < ApplicationController
   end
 
   def edit
-    @record = Record.find(params[:campaign_id])
-    @campaign = Campaign.find(params[:id])
-    
+    @record = Record.find(params[:id])
+    @campaign = Campaign.find(params[:campaign_id])
   end
 
   def new
@@ -38,9 +37,10 @@ class RecordsController < ApplicationController
   end
 
   def update
+    @campaign = Campaign.find(params[:campaign_id])
     @record = Record.find(params[:id])
-    if @record.updata_attributes(params[:record])
-      redirect_to @record
+    if @record.update_attributes(params[:record])
+      redirect_to @campaign
     else
       render status: 500
     end
@@ -48,7 +48,11 @@ class RecordsController < ApplicationController
 
   def destroy
     @record = Record.find(params[:id])
-    @record.destroy
+    if @record.destroy
+      redirect_to Campaign.find(params[:campaign_id])
+    else
+      render status: 500
+    end
   end
 
 end

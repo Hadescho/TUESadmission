@@ -31,18 +31,19 @@ class CampaignsController < ApplicationController
   end
 
   def show
-    @campaign = Campaign.find(params[:id])
+    if params[:id].nil?
+      @campaign = Campaign.last
+    else  
+      @campaign = Campaign.find(params[:id])
+    end
   end
 
   def update
     @campaign = Campaign.find(params[:id])
-    temp = Record.new(params[:campaign][:records])
-    @campaign.records<< temp
-    @campaign.name = params[:campaign][:name]
-    @campaign.description = params[:campaign][:description]
-    if @campaign.save()
+
+    if @campaign.update_attributes(params[:campaign])
       flash[:success] = "Кампанията бе успешно обновлена"
-      redirect_to :root
+      redirect_to @campaign
     else
       flash[:alert] = "Кампанията не бе успешно обновлена. Моля опитайте отново"
     end

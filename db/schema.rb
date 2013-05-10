@@ -13,11 +13,6 @@
 
 ActiveRecord::Schema.define(:version => 20130502064854) do
 
-  create_table "CampaignRecordRelations", :force => true do |t|
-    t.integer "campaign_id"
-    t.integer "record_id"
-  end
-
   create_table "campaign_records", :force => true do |t|
     t.integer "campaign_id"
     t.integer "record_id"

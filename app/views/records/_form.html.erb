@@ -1,14 +1,11 @@
-<%= form_for @campaign do |c| -%>
-  	<%= c.fields_for :records do |f| %> 
+<%= form_for @record, url: campaign_record_path(campaign_id: @campaign.id, id: @record.id) do |f| %>
 		<%= f.hidden_field :record_type_id %>
 		<%= f.hidden_field :campaign_id %>
-		Име на записа: <%= f.text_field :name %>
 
 		<%= f.fields_for :properties, OpenStruct.new(@record.properties) do |builder| %>
 		 	<% @record.record_type.fields.each do |field| %>
-		  		<%= render "records/#{field.field_type}", field: field, f:builder %>
+		  		<%= render "records/#{field.field_type}", field: field, f: builder %>
 		  	<% end %>
 		<% end %>
-  	<% end %>
-  <%= submit_tag 'Запишете' %>
+		<%= f.submit "Запишете" %>
 <% end %>
