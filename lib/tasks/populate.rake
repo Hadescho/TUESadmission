@@ -5,6 +5,17 @@ namespace :db  do
 		campaign = Campaign.create({name: "Sample campaign"})
 		Record.delete_all # empty the Record database
 		rec_type = RecordType.create({name: "test-type"})
+		rec_type.fields<<RecordField.create({name:"Собствено име",field_type: :text_field})
+		rec_type.fields<<RecordField.create({name:"Бащино име",field_type: :text_field})
+		rec_type.fields<<RecordField.create({name:"Фамилно име",field_type: :text_field})
+		rec_type.fields<<RecordField.create({name:"ЕГН",field_type: :text_field})
+		rec_type.fields<<RecordField.create({name:"БЕЛ - училище",field_type: :text_field})
+		rec_type.fields<<RecordField.create({name:"Физика - училище",field_type: :text_field})
+		rec_type.fields<<RecordField.create({name:"Математика - изпит",field_type: :text_field})
+		rec_type.fields<<RecordField.create({name:"Български - изпит",field_type: :text_field})
+		rec_type.fields<<RecordField.create({name:"Математика - ТУЕС",field_type: :text_field})
+		rec_type.fields<<RecordField.create({name:"Желание1",field_type: :text_field})
+		rec_type.fields<<RecordField.create({name:"Желание2",field_type: :text_field})
 		100.times do |i|
 			first = (rand*2).to_i + 1
 			 first == 1 ? second = 2 : second = 1 
@@ -24,4 +35,4 @@ namespace :db  do
 			}})
 		end
 	end
-end
+end 
