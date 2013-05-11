@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130510114940) do
+ActiveRecord::Schema.define(:version => 20130511124534) do
 
   create_table "campaign_records", :force => true do |t|
     t.integer "campaign_id"
@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(:version => 20130510114940) do
     t.integer  "record_type_id"
     t.text     "properties"
     t.integer  "campaign_id"
+    t.integer  "entry_number"
   end
 
   create_table "sp_records", :force => true do |t|

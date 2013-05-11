@@ -1,8 +1,9 @@
 #encoding: UTF-8
 namespace :db  do
-	desc "Populating the database with fake informatin in order to test"
+	desc "Populating the database with fake records in order to test and create a user"
 	task populate: :environment do
-		campaign = Campaign.create({name: "Sample campaign"})
+		entry_number_counter = 0
+		campaign = Campaign.create({name: "Sample campaign", record_type_id: 1})
 		Record.delete_all # empty the Record database
 		rec_type = RecordType.create({name: "test-type"})
 		rec_type.fields<<RecordField.create({name:"Собствено име",field_type: :text_field})
@@ -19,8 +20,9 @@ namespace :db  do
 		100.times do |i|
 			first = (rand*2).to_i + 1
 			 first == 1 ? second = 2 : second = 1 
-
-			campaign.records<< Record.create({campaign_id: 1,record_type_id: 1, properties:{
+			entry_number_counter += 1
+			puts entry_number_counter
+			campaign.records<< Record.create({campaign_id: 1,record_type_id: 1, entry_number: entry_number_counter, properties:{
 				("Собствено име".to_sym) => Faker::Name.first_name,
 				("Бащино име".to_sym) => Faker::Name.first_name,
 				("Фамилно име".to_sym) => Faker::Name.last_name,
@@ -34,5 +36,6 @@ namespace :db  do
 				("Желание2".to_sym) => second
 			}})
 		end
+		User.create(email:"test@test.com", password:"asdasdasd", password_confirmation: "asdasdasd")
 	end
 end 
