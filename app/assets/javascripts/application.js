@@ -13,3 +13,21 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+$(document).ready(function() {
+	$(function () {
+	    $("#campaign-records #checkAll").change(function () {
+	    	console.log("change function")
+	        if ($("#campaign-records #checkAll").is(":checked")) {
+	        	console.log("check all is checked")
+	            $("#campaign-records :checkbox").prop("checked", true);
+	        } else {
+	        	console.log("check all is unchecked")
+	            $("#campaign-records :checkbox").prop("checked", false);
+			}
+	    });
+	    $(".others").change(function () {
+	    	console.log("others have changed");
+	    });
+	});
+})

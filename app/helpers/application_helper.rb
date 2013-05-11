@@ -10,6 +10,7 @@ module ApplicationHelper
     link_to(name, '#', class: "add_fields", data: {id: id, fields: fields.gsub("\n", "")})
   end
 
-  
-  
+  def link_to_submit(text)
+    link_to_function text, "$(this).closest('form').submit()"
+  end
 end

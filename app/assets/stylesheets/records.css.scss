@@ -15,9 +15,12 @@
 	th {
 		font-weight: bold;
 		text-transform: uppercase;
+		background: #f8f8f8;
 	}
 
 	tr {line-height: 20px;}
-	tr:nth-child(even) {background: #eee}
+	tr:nth-child(even) {background: #fbfbfb}
 	tr:nth-child(odd) {background: #fff}
+
+	tr:hover {background: #eee;}
 }

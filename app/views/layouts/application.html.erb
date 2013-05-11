@@ -17,7 +17,7 @@
           <li class="user-auth"><%= current_user.email %></li>
           <li class="user-auth"><%= link_to "Изход", destroy_user_session_path, method: :delete%></li>
         <% else %>
-          <li class="user-auth"><%= link_to "Влезте в профила си", new_user_session_path %></li>
+          <li class="user-auth"><%= link_to "Вход", new_user_session_path %></li>
         <% end %>
         </ul>
       </nav>

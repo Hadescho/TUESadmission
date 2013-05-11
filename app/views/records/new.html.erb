@@ -1,6 +1,5 @@
-<h1>Нов Запис</h1>
-
-<%= render 'form' %>
-
-
-<%= params.inspect%>
+<div class="centered-box">
+	<%= link_to raw('<i class="icon-remove-circle"></i> Отказ'), :back, class: "backlink" %>
+	<h2>Нов кандидат</h2>
+	<%= render 'form' %>
+</div>

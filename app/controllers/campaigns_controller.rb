@@ -56,5 +56,11 @@ class CampaignsController < ApplicationController
     end
   end
 
+  def modify_records
+    params[:record_ids].each do |id|
+      Record.find(id).destroy
+    end
+    redirect_to Campaign.find(params[:campaign_id])
+  end
   
 end

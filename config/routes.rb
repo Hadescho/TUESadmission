@@ -8,6 +8,8 @@ Admission::Application.routes.draw do
     resources :records
   end
 
+  match "campaigns/:campaign_id/edit/records" => "campaigns#modify_records", via: :put
+
   root to:"campaigns#show"
   # The priority is based upon order of creation:
   # first created -> highest priority.

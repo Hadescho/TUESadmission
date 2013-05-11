@@ -1,34 +1,40 @@
-<section id="actions">
-	<ul>
-		<li><%=link_to raw('<i class="icon-plus-sign"></i> Нов запис'), new_campaign_record_path(campaign_id: @campaign.id, record_type_id: @campaign.record_type_id)%></li>
-	</ul>
-</section>
-
 <div id="content">
+	<%= form_for @campaign, url: {action: 'modify_records', campaign_id: @campaign.id} do |f| %>
+
+	<section id="actions">
+		<ul>
+			<li><%= link_to raw('<i class="icon-plus-sign"></i> Нов кандидат'), new_campaign_record_path(campaign_id: @campaign.id, record_type_id: @campaign.record_type_id)%></li>
+			<li><%= link_to_submit raw('<i class="icon-remove-circle"></i> Изтриване на маркираните') %></li>
+		</ul>
+	</section>
+	
 	<table id="campaign-records">
 		<thead>
 			<tr>
+				<th><input type="checkbox" id="checkAll" /></th>
 				<th>ID</th>
 				<% @campaign.records.first.properties.each_key do |property|%>
 				<th><%= property %></th>
 				<% end %>
-				<th>Профил</th>
-				<th>Редактирай</th>
-				<th>Изтрий</th>
+				<!--<th>Профил</th>-->
+				<th>Редакция</th>
+				<th>Изтриване</th>
 			</tr>
 		</thead>
 		<tbody>
 			<% @campaign.records.each do |record| %>
 			<tr>
+				<td><%= check_box_tag 'record_ids[]', record.id %></td>
 				<td><%= record.id %> </td>
 				<% record.properties.each_value do |value| %>
 				<td><%= value %></td>
 				<% end %>
-				<td class="center"><%= link_to raw('<i class="icon-user"></i>'), campaign_record_path(campaign_id: @campaign.id, id: record.id), method: :get %></td>
-				<td class="center"><%= link_to raw('<i class="icon-pencil"></i>'), edit_campaign_record_path(campaign_id: @campaign.id, id: record.id) %></td>
+				<!--<td class="center"><%= link_to raw('<i class="icon-user"></i>'), campaign_record_path(campaign_id: @campaign.id, id: record.id), method: :get %></td>-->
+				<td class="center"><%= link_to raw('<i class="icon-edit"></i>'), edit_campaign_record_path(campaign_id: @campaign.id, id: record.id) %></td>
 				<td class="center"><%= link_to raw('<i class="icon-remove"></i>'), campaign_record_path(campaign_id: @campaign.id, id: record.id),  method: :delete, confirm: "Сигурни ли сте, че искате да изтриете този запис?"%>
 			</tr>
 			<% end %>
 		</tbody>
 	</table>
+	<% end %>
 </div>

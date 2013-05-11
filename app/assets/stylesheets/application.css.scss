@@ -101,6 +101,7 @@ header {
  			text-decoration: none;
 
  			&:hover {
+ 				color: #fff;
  				text-decoration: underline;
  			}
  		}
@@ -170,6 +171,17 @@ header {
 	width: 600px;
 	margin: 50px auto 0;
 
+	.backlink {
+		float: right;
+		color: #333;
+		display: block;
+		margin-top: 15px;
+
+		i {
+			vertical-align: -1px;
+		}
+	}
+
 	form {
 		margin: 25px 0 15px 0;
 		border: 1px solid #ddd;
@@ -183,6 +195,12 @@ header {
 			&:last-child {
 				margin-bottom: 0;
 			}
+		}
+
+		input[type=text], input[type=email] {
+			width: 520px;
+			padding: 10px;
+			margin-bottom: 15px;
 		}
 	}
 }
