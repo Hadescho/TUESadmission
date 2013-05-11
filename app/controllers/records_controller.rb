@@ -25,9 +25,15 @@ class RecordsController < ApplicationController
   end
 
   def create
-    @record = Campaign.find(params[:campaign_id]).records.new
+    @campaign = Campaign.find(params[:campaign_id])
+    @record = @campaign.records.new
     @record.record_type_id = params[:record][:record_type_id]
     @record.name = params[:record][:name]
+    if !@campaign.records.empty?
+      @record.entry_number = @campaign.records.last.entry_number + 1
+    else
+      @record.entry_number = 1
+    end
     @record.properties = params[:record][:properties]
     if @record.save
       redirect_to @record
