@@ -1,6 +1,6 @@
 #encoding: UTF-8
 namespace :db  do
-	desc "Populating the database with fake informatin in order to test"
+	desc "Populating the database with fake records in order to test and create a user"
 	task populate: :environment do
 		entry_number_counter = 0
 		campaign = Campaign.create({name: "Sample campaign", record_type_id: 1})
@@ -36,5 +36,6 @@ namespace :db  do
 				("Желание2".to_sym) => second
 			}})
 		end
+		User.create(email:"test@test.com", password:"asdasdasd", password_confirmation: "asdasdasd")
 	end
 end 
