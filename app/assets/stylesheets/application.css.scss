@@ -49,6 +49,11 @@ body {
 	font-family: "Noto Sans", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
 }
 
+h2 {
+	font-size: 30px !important;
+	font-weight: bold !important;
+}
+
 header {
  	background: #8e0057;
  	color: #fff;
@@ -103,10 +108,16 @@ header {
  }
 
 .flash {
-	padding: 10px;
+	line-height: $actionsBarHeight;
 	font-size: 13px;
-	box-shadow: 0px 1px 10px rgba(0,0,0,0.3);
+	margin: 0;
+	padding: 0;
+	border-top: 1px solid $navSeparatorShade;
 	color: white;
+	border-radius: 0 !important;
+	text-shadow: none !important;
+	border-left: none;
+	border-right: none;
 
 	a {
 		font-weight: bold;
@@ -124,7 +135,7 @@ header {
 
 	&.notice {
 		background: $flashNoticeBackground;
-		border-bottom: 1px solid $flashNoticeBorder;
+		color: #333;
 	}
 
 	&.success {
@@ -152,5 +163,26 @@ header {
 		font-weight: bold;
 		text-decoration: none;
 		color: #333;
+	}
+}
+
+.centered-box {
+	width: 600px;
+	margin: 50px auto 0;
+
+	form {
+		margin: 25px 0 15px 0;
+		border: 1px solid #ddd;
+		background: #fafafa;
+		padding: 25px;
+		border-radius: 5px;
+
+		.form-row {
+			margin-bottom: 10px;
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
 	}
 }
