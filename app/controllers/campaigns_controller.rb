@@ -20,7 +20,7 @@ class CampaignsController < ApplicationController
       render status: :ok 
     else
       flash[:alert] = "Грешка при създаването на кампанията. Моля опитайте отново"
-      render "Campaigns#new"
+      render "campaigns#new"
     end
   end
 
@@ -38,6 +38,10 @@ class CampaignsController < ApplicationController
       @campaign = Campaign.last
     else  
       @campaign = Campaign.find(params[:id])
+    end
+
+    if @campaign.nil?
+      render "campaigns#new"
     end
   end
 

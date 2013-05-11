@@ -1,3 +1,23 @@
 // Place all the styles related to the Records controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#campaign-records {
+	margin: 15px;
+
+	th, td {
+		padding: 5px;
+		font-size: 13px;
+		vertical-align: middle;
+		border: 1px solid #eee;
+	}
+
+	th {
+		font-weight: bold;
+		text-transform: uppercase;
+	}
+
+	tr {line-height: 20px;}
+	tr:nth-child(even) {background: #eee}
+	tr:nth-child(odd) {background: #fff}
+}

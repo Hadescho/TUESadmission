@@ -1,29 +1,34 @@
-<span class:"Campaign-controll">
-	<%=link_to "+ Нов запис", new_campaign_record_path(campaign_id: @campaign.id, record_type_id: @campaign.record_type_id)%>
-</span>
+<section id="actions">
+	<ul>
+		<li><%=link_to raw('<i class="icon-plus-sign"></i> Нов запис'), new_campaign_record_path(campaign_id: @campaign.id, record_type_id: @campaign.record_type_id)%></li>
+	</ul>
+</section>
 
-<table>
-	<thead>
-		<td>ID</td>
-		<% @campaign.records.first.properties.each_key do |propertie|%>
-		<td><%= propertie %></td>
-		<% end %>
-		<td>Профил</td>
-		<td>Редактирай</td>
-		<td>Изтрий</td>
-	</thead>
-	<tbody>
-		<% @campaign.records.each do |record| %>
-		<tr>
-			<td><%= record.id %> </td>
-			<% record.properties.each_value do |value| %>
-			<td><%= value %></td>
+<div id="content">
+	<table id="campaign-records">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<% @campaign.records.first.properties.each_key do |property|%>
+				<th><%= property %></th>
+				<% end %>
+				<th>Профил</th>
+				<th>Редактирай</th>
+				<th>Изтрий</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @campaign.records.each do |record| %>
+			<tr>
+				<td><%= record.id %> </td>
+				<% record.properties.each_value do |value| %>
+				<td><%= value %></td>
+				<% end %>
+				<td class="center"><%= link_to raw('<i class="icon-user"></i>'), campaign_record_path(campaign_id: @campaign.id, id: record.id), method: :get %></td>
+				<td class="center"><%= link_to raw('<i class="icon-pencil"></i>'), edit_campaign_record_path(campaign_id: @campaign.id, id: record.id) %></td>
+				<td class="center"><%= link_to raw('<i class="icon-remove"></i>'), campaign_record_path(campaign_id: @campaign.id, id: record.id),  method: :delete, confirm: "Сигурни ли сте, че искате да изтриете този запис?"%>
+			</tr>
 			<% end %>
-			<td><%= link_to "Профил", campaign_record_path(campaign_id: @campaign.id, id: record.id), method: :get %></td>
-			<td><%= link_to "Редактирай", edit_campaign_record_path(campaign_id: @campaign.id, id: record.id) %></td>
-			<td><%= link_to "Изтрий", campaign_record_path(campaign_id: @campaign.id, id: record.id),  method: :delete, confirm: "Сигурни ли сте?"%>
-		</tr>
-		<% end %>
-	</tbody>
-
-</table>
+		</tbody>
+	</table>
+</div>

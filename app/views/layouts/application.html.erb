@@ -2,33 +2,50 @@
 <html>
 <head>
   <title>Admission</title>
+  <link href='http://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic&subset=latin,cyrillic-ext,cyrillic' rel='stylesheet' type='text/css'>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 </head>
 <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-
-    <div class="user_auth" style="float:right">
-    	<%if user_signed_in? %>
-    		Логнат сте като: <%= current_user.email %>
-    		<%= link_to "Излезте от профила си", destroy_user_session_path, method: :delete%>
-    	<% else %>
-    		<%= link_to "Влезте в профила си", new_user_session_path %>
-    	<% end %>
+  <header>
+    <div class="right">
+      <nav>
+        <ul>
+        <%if user_signed_in? %>
+          <li class="user-auth"><%= current_user.email %></li>
+          <li class="user-auth"><%= link_to "Изход", destroy_user_session_path, method: :delete%></li>
+        <% else %>
+          <li class="user-auth"><%= link_to "Влезте в профила си", new_user_session_path %></li>
+        <% end %>
+        </ul>
+      </nav>
     </div>
 
-    <div class="campaign_select" style="float:center">
-    <% campaigns_names = []; campaigns_ids = [] %>
-    <% Campaign.all.each {|c| campaigns_names<< [c.name,c.id]} %>
-            <%= select_tag "campaigns", options_for_select(campaigns_names,campaigns_ids), onchange:"document.location = '/campaigns/' + this.value" %>
+    <div class="left">
+      <h1>ELSYS Admission</h1>
+      <div class="campaign-select">
+        <% campaigns_names = []; campaigns_ids = [] %>
+        <% Campaign.all.each {|c| campaigns_names<< [c.name,c.id]} %>
+        <%= select_tag "campaigns", options_for_select(campaigns_names,campaigns_ids), onchange:"document.location = '/campaigns/' + this.value" %>
+      </div>
     </div>
-<%= yield %>
 
+    <div class="clear"></div>
+  </header>
 
-<p>WARNING : config.active_record.whitelist_attributes is set to false ! </p>
+  <% flash.each do |name, msg| %>
+    <section class="flash <%= name %>">
+      <div class="center">
+        <%= raw(msg) %>
+      </div>
+    </section>
+  <% end %>
 
+  <div id="page-content">
+    <%= yield %>
+  </div>
+  <!--<p>WARNING : config.active_record.whitelist_attributes is set to false ! </p>-->
 </body>
 </html>

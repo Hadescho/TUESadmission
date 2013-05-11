@@ -1,0 +1,156 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+ */
+
+@import "bootstrap";
+
+$navSeparatorColor: #aa0069;
+$navSeparatorShade: #67003f;
+
+$headerHeight: 40px;
+$actionsBarHeight: 30px;
+
+$flashAlertBackground: #c23030;
+$flashAlertBorder: #8e2023;
+
+$flashNoticeBackground: #ffc444;
+$flashNoticeBorder: #ad8326;
+
+$flashSuccessBackground: #7baa2a;
+$flashSuccessBorder: #597a1a;
+
+.left {
+	float: left;
+}
+
+.right {
+	float: right;
+}
+
+.center {
+	text-align: center;
+}
+
+.clear {
+	clear: both;
+}
+
+body {
+	font-family: "Noto Sans", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+}
+
+header {
+ 	background: #8e0057;
+ 	color: #fff;
+ 	line-height: $headerHeight;
+
+ 	h1 {
+ 		float: left;
+ 		height: 30px;
+ 		width: 55px;
+ 		margin: 5px 15px 5px 15px;
+ 		background: url("logo.png") no-repeat center center;
+ 		text-indent: -9999px;
+ 	}
+
+ 	.campaign-select {
+ 		float: left;
+ 		margin-top: 5px;
+ 		margin-bottom: -5px;
+ 	}
+
+ 	nav {
+ 		margin-right: 15px;
+ 		border-right: 1px solid $navSeparatorShade;
+ 		height: $headerHeight;
+
+ 		ul {
+ 			height: $headerHeight;
+ 			border-left: 1px solid $navSeparatorColor;
+ 		}
+
+ 		li {
+ 			display: inline-block;
+ 			line-height: $headerHeight;
+ 			padding: 0px 10px;
+ 			border-right: 1px solid $navSeparatorColor;
+ 			border-left: 1px solid $navSeparatorShade;
+ 			font-size: 11px;
+ 			text-transform: uppercase;
+ 			float: left;
+ 		}
+
+ 		a {
+ 			color: #fff;
+ 			font-weight: bold;
+ 			text-decoration: none;
+
+ 			&:hover {
+ 				text-decoration: underline;
+ 			}
+ 		}
+ 	}
+ }
+
+.flash {
+	padding: 10px;
+	font-size: 13px;
+	box-shadow: 0px 1px 10px rgba(0,0,0,0.3);
+	color: white;
+
+	a {
+		font-weight: bold;
+		color: white;
+
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+
+	&.alert {
+		background: $flashAlertBackground;
+		border-bottom: 1px solid $flashAlertBorder;
+	}
+
+	&.notice {
+		background: $flashNoticeBackground;
+		border-bottom: 1px solid $flashNoticeBorder;
+	}
+
+	&.success {
+		background: $flashSuccessBackground;
+		border-bottom: 1px solid $flashSuccessBorder;
+	}
+}
+
+#actions {
+	background: #eee;
+	border-top: 1px solid $navSeparatorShade;
+	border-bottom: 1px solid #ddd;
+	line-height: $actionsBarHeight;
+	color: #333;
+	padding-left: 10px;
+
+	li {
+		display: inline-block;
+		padding: 0 5px;
+		font-size: 12px;
+		text-transform: uppercase;
+	}
+
+	a {
+		font-weight: bold;
+		text-decoration: none;
+		color: #333;
+	}
+}
