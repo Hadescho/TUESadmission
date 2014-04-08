@@ -26,6 +26,8 @@ group :development do
   	gem 'meta_request'
 end
 gem 'devise'
+
+gem 'therubyracer', platforms: :ruby
 gem 'faker'
 gem 'magic_encoding'
 gem 'jquery-rails'
