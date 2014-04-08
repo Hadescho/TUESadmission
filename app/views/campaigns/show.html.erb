@@ -13,8 +13,10 @@
 			<tr>
 				<th><input type="checkbox" id="checkAll" /></th>
 				<th>ID</th>
+				<%if !@campaign.records.first.nil?%>
 				<% @campaign.records.first.properties.each_key do |property|%>
 				<th><%= property %></th>
+				<% end %>
 				<% end %>
 				<!--<th>Профил</th>-->
 				<th>Редакция</th>
