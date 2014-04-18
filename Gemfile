@@ -6,7 +6,8 @@ gem 'rails', '3.2.11'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3'
-
+gem 'prawn'
+gem "prawnto_2", :require => "prawnto"
 
 # Gems used only for assets and not required
 # in production environments by default.
