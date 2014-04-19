@@ -32,8 +32,7 @@
 					<% end %>
 				<% end %>
 				<!--<th>Профил</th>-->
-				<th>Редакция</th>
-				<th>Изтриване</th>
+				<th>Повече</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -58,8 +57,7 @@
 						<% end %>
 				<% end %>
 				<!--<td class="center"><%= link_to raw('<i class="icon-user"></i>'), campaign_record_path(campaign_id: @campaign.id, id: record.id), method: :get %></td>-->
-				<td class="center"><%= link_to raw('<i class="icon-edit"></i>'), edit_campaign_record_path(campaign_id: @campaign.id, id: record.id) %></td>
-				<td class="center"><%= link_to raw('<i class="icon-remove"></i>'), campaign_record_path(campaign_id: @campaign.id, id: record.id),  method: :delete, confirm: "Сигурни ли сте, че искате да изтриете този запис?"%>
+				<td><%= link_to "Повече информация", root_url + "campaigns/#{record.campaign_id}/records/#{record.id}" %></td>
 			</tr>
 			<% end %>
 		</tbody>
