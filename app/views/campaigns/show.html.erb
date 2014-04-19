@@ -14,9 +14,22 @@
 				<th><input type="checkbox" id="checkAll" /></th>
 				<th>ID</th>
 				<%if !@campaign.records.first.nil?%>
-				<% @campaign.records.first.properties.each_key do |property|%>
-				<th><%= property %></th>
-				<% end %>
+					<% @campaign.records.first.properties.each_key do |property|%>
+						<%if (property =~ /Бащино име/)|| 
+							(property =~ /Собствено име/) || 
+							(property =~ /Фамилно име/) ||
+							(property =~ /EГН/) ||
+							(property =~ /БЕЛ - училище/) ||
+							(property =~ /Физика - училище/) ||
+							(property =~ /Математика - изпит/) ||
+							(property =~ /Български - изпит/) ||
+							(property =~ /Математика - ТУЕС/) ||
+							(property =~ /Желание1/) ||
+							(property =~ /Желание2/)
+						%>
+							<th><%=property%></th>
+						<% end %>
+					<% end %>
 				<% end %>
 				<!--<th>Профил</th>-->
 				<th>Редакция</th>
@@ -28,8 +41,21 @@
 			<tr>
 				<td><%= check_box_tag 'record_ids[]', record.id %></td>
 				<td><%= record.id %> </td>
-				<% record.properties.each_value do |value| %>
-				<td><%= value %></td>
+				<% record.properties.each do |key,value| %>
+					<%if (key =~ /Бащино име/)|| 
+							(key =~ /Собствено име/) || 
+							(key =~ /Фамилно име/) ||
+							(key =~ /EГН/) ||
+							(key =~ /БЕЛ - училище/) ||
+							(key =~ /Физика - училище/) ||
+							(key =~ /Математика - изпит/) ||
+							(key =~ /Български - изпит/) ||
+							(key =~ /Математика - ТУЕС/) ||
+							(key =~ /Желание1/) ||
+							(key =~ /Желание2/)
+						%>
+							<th><%=value%></th>
+						<% end %>
 				<% end %>
 				<!--<td class="center"><%= link_to raw('<i class="icon-user"></i>'), campaign_record_path(campaign_id: @campaign.id, id: record.id), method: :get %></td>-->
 				<td class="center"><%= link_to raw('<i class="icon-edit"></i>'), edit_campaign_record_path(campaign_id: @campaign.id, id: record.id) %></td>
