@@ -87,6 +87,41 @@ bounding_box([0, -490], :width => 330, :height => 200) do
 	pdf.text "Приел документите(име и подпис): ..............................."
 end
 
+bounding_box([370, -50], :width => 330, :height => 10) do
+	transparent(0.5) { stroke_bounds }
+	font_size 9
+	pdf.text "ТЕХНОЛОГИЧНО УЧИЛИЩЕ ЕЛЕКТРОННИ СИСТЕМИ към ТУ - СОФИЯ"
+end
+gap = 20
+bounding_box([370, -70], :width => 330, :height => 220) do
+	transparent(0.5) { stroke_bounds }
+	
+	bounding_box([10, 200], :width => 120, :height => 150) do
+		transparent(0.5) { stroke_bounds }
+		pdf.text "Снимка на"
+		pdf.text "ученика."
+	end
+
+	bounding_box([140, 200], :width => 180, :height => 150) do
+		transparent(0.5) { stroke_bounds }
+		font_size 12
+		pdf.text "Входящ №: "
+		move_down 5
+		pdf.text "Име: "
+		move_down 5
+		pdf.text "Презиме: "
+		move_down 5
+		pdf.text "Фамилия: "
+		move_down 5
+		pdf.text "Моля носете настоящия картон на изпита."
+	end
+
+	bounding_box([10, 40], :width => 300, :height => 20) do
+		transparent(0.5) { stroke_bounds }
+		pdf.text "Местата се заемат до 7,45 часа."
+	end
+end
+
 
 
 
