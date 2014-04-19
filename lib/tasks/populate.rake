@@ -17,6 +17,12 @@ namespace :db  do
 		rec_type.fields<<RecordField.create({name:"Математика - ТУЕС",field_type: :text_field})
 		rec_type.fields<<RecordField.create({name:"Желание1",field_type: :text_field})
 		rec_type.fields<<RecordField.create({name:"Желание2",field_type: :text_field})
+		rec_type.fields<<RecordField.create({name:"Имена на родител",field_type: :text_field})
+		rec_type.fields<<RecordField.create({name:"Адрес",field_type: :text_field})
+		rec_type.fields<<RecordField.create({name:"Домашен телефон",field_type: :text_field})
+		rec_type.fields<<RecordField.create({name:"Мобилен телефон",field_type: :text_field})
+		rec_type.fields<<RecordField.create({name:"Мейл",field_type: :text_field})
+		rec_type.fields<<RecordField.create({name:"Училище",field_type: :text_field})
 		100.times do |i|
 			first = (rand*2).to_i + 1
 			 first == 1 ? second = 2 : second = 1 
@@ -33,7 +39,13 @@ namespace :db  do
 				("Български - изпит".to_sym) => (rand()*4+2).round(4),
 				("Математика - ТУЕС".to_sym) => (rand()*4+2).round(4),
 				("Желание1".to_sym) => first,
-				("Желание2".to_sym) => second
+				("Желание2".to_sym) => second,
+				("Имена на родител".to_sym) => Faker::Name.name,
+				("Адрес".to_sym) => Faker::Address.street_address,
+				("Домашен телефон".to_sym) => (rand()+5),
+				("Мобилен телефон".to_sym) => (rand()+5),
+				("Мейл".to_sym) => Faker::Internet.email,
+				("Училище".to_sym) => Faker::Name.title
 			}})
 		end
 		User.create(email:"test@test.com", password:"asdasdasd", password_confirmation: "asdasdasd")

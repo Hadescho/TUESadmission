@@ -21,12 +21,12 @@ bounding_box([0, -120], :width => 330, :height => 110) do
 	move_down font.height
 	font_size 8
 	pdf.text "Връзка с родител(настойник):", :character_spacing => 0
-	pdf.text "Пешо Петров Петров", :character_spacing => 0
+	pdf.text "#{@record.properties["Имена на родител".to_sym]}", :character_spacing => 0
 	pdf.text "дом. тел.", :character_spacing => 0 
-	pdf.text "12 34567"
+	pdf.text "#{@record.properties["Домашен телефон".to_sym]}"
 	pdf.text "моб. тел.", :character_spacing => 0
-	pdf.text "0123456789" 
-	pdf.text "e-mail : test@test.com"
+	pdf.text "#{@record.properties["Мобилен телефон".to_sym]}" 
+	pdf.text "e-mail : #{@record.properties["Мейл".to_sym]}"
 end
 
 bounding_box([80, -240], :width => 330, :height => 20) do
@@ -38,9 +38,9 @@ bounding_box([0, -270], :width => 330, :height => 210) do
 	transparent(0.5) { stroke_bounds }
 	font_size 8
 
-	pdf.text "от #{@record.name}", :character_spacing => 0
-	pdf.text "ученик/чка от VII клас на училище", :character_spacing => 0
-	pdf.text "живеещ(настоящ адрес): адрес", :character_spacing => 0
+	pdf.text "от #{@record.properties["Собствено име".to_sym]} #{@record.properties["Бащино име".to_sym]} #{@record.properties["Фамилно име".to_sym]}", :character_spacing => 0
+	pdf.text "ученик/чка от VII клас на училище: #{@record.properties["Училище".to_sym]}", :character_spacing => 0
+	pdf.text "живеещ(настоящ адрес): #{@record.properties["Адрес".to_sym]}", :character_spacing => 0
 	
 	move_down 10
 	
@@ -76,7 +76,7 @@ bounding_box([0, -490], :width => 330, :height => 200) do
 	move_down 10
 
 	font_size 8
-	pdf.text "гр.София, #{Time.now}"
+	pdf.text "гр.София, #{Date.today}"
 
 	move_down 10
 
@@ -92,7 +92,7 @@ bounding_box([370, -50], :width => 330, :height => 10) do
 	font_size 9
 	pdf.text "ТЕХНОЛОГИЧНО УЧИЛИЩЕ ЕЛЕКТРОННИ СИСТЕМИ към ТУ - СОФИЯ"
 end
-gap = 20
+
 bounding_box([370, -70], :width => 330, :height => 220) do
 	transparent(0.5) { stroke_bounds }
 	
@@ -105,13 +105,13 @@ bounding_box([370, -70], :width => 330, :height => 220) do
 	bounding_box([140, 200], :width => 180, :height => 150) do
 		transparent(0.5) { stroke_bounds }
 		font_size 12
-		pdf.text "Входящ №: "
+		pdf.text "Входящ №: #{@record.entry_number}"
 		move_down 5
-		pdf.text "Име: "
+		pdf.text "Име: #{@record.properties["Собствено име".to_sym]}"
 		move_down 5
-		pdf.text "Презиме: "
+		pdf.text "Презиме: #{@record.properties["Бащино име".to_sym]}"
 		move_down 5
-		pdf.text "Фамилия: "
+		pdf.text "Фамилия: #{@record.properties["Фамилно име".to_sym]}"
 		move_down 5
 		pdf.text "Моля носете настоящия картон на изпита."
 	end
