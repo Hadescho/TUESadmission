@@ -19,17 +19,25 @@
 
 		<%= link_to "Генерирай документ", 
 			request.url + '.pdf' 
-		%> |
+		%> <br><br>
 				
 		<%= link_to "Промени", 
-			root_url + "campaigns/#{@record.campaign_id}/records/#{@record.id}", 
+			root_url + "campaigns/#{@record.campaign_id}/records/#{@record.id}/edit", 
 			method: "update"
-		%> |
+		%> <br><br>
 
-		<%= link_to "Изтрий", 
-			root_url + "campaigns/#{@record.campaign_id}/records/#{@record.id}", 
-			method: "delete" 
-		%>
+		<%= link_to "Назад", 
+			:back
+		%> <br><br>
+
+		<% if @record.id != nil %>
+      		<%= button_to "Изтрий", 
+      			campaign_record_path(@record.campaign_id), 
+      			:method=>:delete, 
+      			:class=>:destroy,
+      			:confirm=>"Сигурни ли сте?" 
+      		%>
+		<% end %>
 	
 		</td>
 	</tr>	
