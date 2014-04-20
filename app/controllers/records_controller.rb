@@ -22,6 +22,9 @@ class RecordsController < ApplicationController
     @record = Record.new
     @record.record_type_id = @campaign.record_type_id
     @record.campaign_id = @campaign.id
+    @record.entry_number = Record.where(campaign_id: @campaign.id).all.count + 1
+    #the entry number is calculated
+    #by adding 1 to the quantity of the campaign records
     @campaign.records << @record
   end
 
