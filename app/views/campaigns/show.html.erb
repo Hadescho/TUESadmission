@@ -4,7 +4,7 @@
 	<section id="actions">
 		<ul>
 			<li><%= link_to raw('<i class="icon-plus-sign"></i> Нов кандидат'), new_campaign_record_path(campaign_id: @campaign.id, record_type_id: @campaign.record_type_id)%></li>
-			<li><%= link_to_submit raw('<i class="icon-remove-circle"></i> Изтриване на маркираните') %></li>
+			<li><%= link_to "Всички Кампании", root_url + "campaigns/"%></li>
 		</ul>
 	</section>
 	

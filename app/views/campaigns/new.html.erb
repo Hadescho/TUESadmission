@@ -1,8 +1,23 @@
-<%= form_for @campaign do |f| %>
-	<ul>
-		<li>Име: 	  <%= f.text_field :name %></li>
-		<li>Описание: <%= f.text_area :description%></li>
-		<li>Тип на записите: <%= f.select :record_type_id, options_for_select(  @record_types)%></li>
-	</ul>
-	<%= f.submit %>
-<% end %>
+<% if ! @record_types.empty? %>
+	<%= form_for @campaign do |f| %>
+		<ul>
+			<li>Име: 	  <%= f.text_field :name %></li>
+			<li>Описание: <%= f.text_area :description%></li>	
+			<li>Тип на записите: 
+				<%= f.select :record_type_id, 
+					@record_types
+				%>
+			</li>
+		</ul>
+		<%= f.submit %>
+	<% end %>
+<%else%>
+	<p>
+		За да създадете нова кампания трябва да сте създали поне един вид на записи. <br>
+		Цъкнете линка, за да го направите.
+	</p>
+	<%=
+		link_to "Създай нов вид запис",
+		root_url + "record_types/new"
+	%>
+<%end%>

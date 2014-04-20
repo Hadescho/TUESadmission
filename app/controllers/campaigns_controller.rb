@@ -41,7 +41,9 @@ class CampaignsController < ApplicationController
     end
 
     if @campaign.nil?
-      render "campaigns#new"
+      @campaign = Campaign.new
+      @record_types = RecordType.all
+      render "new"
     end
   end
 

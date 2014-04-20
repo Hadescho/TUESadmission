@@ -21,6 +21,7 @@ class RecordsController < ApplicationController
     @campaign = Campaign.find(params[:campaign_id])
     @record = Record.new
     @record.record_type_id = @campaign.record_type_id
+    @record.campaign_id = @campaign.id
     @campaign.records << @record
   end
 
