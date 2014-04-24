@@ -49,6 +49,7 @@ class CampaignsController < ApplicationController
     respond_to do |format|
       format.html
       format.csv {send_data @campaign.to_csv}
+      format.xls
     end
   end
 
