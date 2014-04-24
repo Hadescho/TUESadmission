@@ -5,7 +5,15 @@ class Campaign < ActiveRecord::Base
 	has_and_belongs_to_many :sp_container, class_name:"Record", join_table: :sp_records
 	has_and_belongs_to_many :cn_container, class_name:"Record", join_table: :cn_records
 
-
+	def to_csv
+		CSV.generate do |csv|
+			self.records.each do |record|
+				record.attributes.each do |atrb|
+					csv << atrb
+				end
+			end
+		end
+	end
 	
 	def bal_aligment 
 	    records_array = self.records.all

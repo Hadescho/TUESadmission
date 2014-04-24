@@ -5,6 +5,7 @@
 		<ul>
 			<li><%= link_to raw('<i class="icon-plus-sign"></i> Нов кандидат'), new_campaign_record_path(campaign_id: @campaign.id, record_type_id: @campaign.record_type_id)%></li>
 			<li><%= link_to "Всички Кампании", root_url + "campaigns/"%></li>
+			<li><%= link_to "Генерирай csv файл", root_url + "campaigns/#{@campaign.id}.csv"%></li>
 		</ul>
 	</section>
 	

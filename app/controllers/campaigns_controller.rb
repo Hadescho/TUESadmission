@@ -45,6 +45,11 @@ class CampaignsController < ApplicationController
       @record_types = RecordType.all
       render "new"
     end
+
+    respond_to do |format|
+      format.html
+      format.csv {send_data @campaign.to_csv}
+    end
   end
 
   def update
