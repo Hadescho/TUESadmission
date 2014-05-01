@@ -9,5 +9,7 @@
 		  	</div>
 		  	<% end %>
 		<% end %>
-		<%= f.submit "Запишете", class: "btn btn-large btn-primary" %>
+		<%= f.submit "Запишете" do %>
+			<%@record.destroy%>
+		<%end%>
 <% end %>
