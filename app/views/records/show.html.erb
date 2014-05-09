@@ -80,20 +80,18 @@
 		</div>	<br />
 		<div class="btn btn-default" style="margin:5px;">
 		<div class="glyphicon glyphicon-backward"></div>
-			<%= link_to "Назад", 
-			:back%>
+			<%= link_to "Към кампанията", root_url + "campaigns/#{@record.campaign_id}"%>
 		</div><br />
-		<div class="btn btn-danger" style="margin:5px;">
-		<div class="glyphicon glyphicon-remove"></div>
-			<% if @record.id != nil %>
-	      		<%= link_to "Изтрий", 
+		
+		<!--	<% if @record.id != nil %>
+	      		<%= button_to "Изтрий", 
 	      			campaign_record_path(@record.campaign_id), 
 	      			:method=>:delete, 
 	      			:class=>:destroy,
 	      			:confirm=>"Сигурни ли сте?" 
 	      		%>
-			<% end %>
-		</div><br />
+			<% end %>-->
+		<br />
 
 	</div>
 	<div class="col-lg-3">

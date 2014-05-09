@@ -1,16 +1,38 @@
 <% if ! @record_types.empty? %>
+	<div class = "well well-small">
+	<div class="form-body">
 	<%= form_for @campaign do |f| %>
+		<div class="panel panel-primary", id ="n-camp-pan">
 		<ul>
-			<li>Име: 	  <%= f.text_field :name %></li>
-			<li>Описание: <%= f.text_area :description%></li>	
-			<li>Тип на записите: 
+			<li>
+				Име:<br>
+				<div class="form-group">
+				<%= f.text_field :name, :class => "form-control" %>
+				</div>
+			</li>
+			<li>
+				Описание:<br> 
+				<div class="form-group">
+				<%= f.text_area :description, :rows => "10", :class =>"form-control"%>
+				</div>
+			</li>	
+			<li>
+				Тип на записите:<br> 
+				<div class="form-group">
 				<%= f.select :record_type_id, 
-					@record_types
+					@record_types, :class => "form-control"
 				%>
+				</div>
 			</li>
 		</ul>
-		<%= f.submit %>
+		<%= f.submit "Запиши", :class => "btn btn-primary" %>
+		</div>
+		</div>
 	<% end %>
+	<div class="panel panel-footer">
+		<%= link_to "Всички Кампании",root_url+"campaigns/", :class => "btn btn-primary "%>
+	</div>
+	</div>
 <%else%>
 	<p>
 		За да създадете нова кампания трябва да сте създали поне един вид на записи. <br>

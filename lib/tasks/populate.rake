@@ -28,7 +28,7 @@ namespace :db  do
 			 first == 1 ? second = 2 : second = 1 
 			entry_number_counter += 1
 			puts entry_number_counter
-			campaign.records<< Record.create({campaign_id: 1,record_type_id: 1, entry_number: entry_number_counter, properties:{
+			campaign.records<< Record.create({campaign_id: campaign.id,record_type_id: 1, entry_number: entry_number_counter, properties:{
 				("Собствено име".to_sym) => Faker::Name.first_name,
 				("Бащино име".to_sym) => Faker::Name.first_name,
 				("Фамилно име".to_sym) => Faker::Name.last_name,

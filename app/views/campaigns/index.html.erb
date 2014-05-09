@@ -1,4 +1,4 @@
-<table>
+<table class="table table-striped">
 	<thead>
 		<th>Име</th>
 		<th>Описание</th>
@@ -7,9 +7,9 @@
 		<tr>
 			<td><%= c.name %></td>
 			<td><%= c.description %></td>
-			<td><%= link_to "Повече информация", root_url + "campaigns/#{c.id}"%></td>
+			<td><%= link_to "Повече информация", root_url + "campaigns/#{c.id}", :class => "btn btn-primary" %></td>
 		</tr>
 	<% end %>
 </table>
 
-<%= link_to "Нова кампания", root_url + "campaigns/new"%>
+<%= link_to "Нова кампания", root_url + "campaigns/new", :class => "btn btn-primary"%>

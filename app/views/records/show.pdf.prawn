@@ -1,4 +1,4 @@
-pdf.font "lib/DejaVuSans.ttf"
+pdf.font "lib/arial.ttf"
 
 rotate(90)
 
