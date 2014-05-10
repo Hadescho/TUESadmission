@@ -134,7 +134,7 @@ bounding_box([380, -410], :width => 330, :height => 150) do
 	pdf.text "Ученикът #{@record.properties["Собствено име".to_sym]} #{@record.properties["Бащино име".to_sym]} #{@record.properties["Фамилно име".to_sym]}", :align => :justify
 
 	font_size 12
-	pdf.text "с входящ номер: #{@record.entry_number},", :align => :justify
+	pdf.text "със входящ номер: #{@record.entry_number},", :align => :justify
 	
 	font_size 8 
 	pdf.text "подаде заявление за състезателен изпит по математика и кандидатстване в Технологично училище „Електронни системи” към Техническия университет – София и заяви  следните желания за подредба на специалностите при класирането:", :align => :justify
