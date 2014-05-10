@@ -131,7 +131,13 @@ end
 bounding_box([380, -410], :width => 330, :height => 150) do
 	#transparent(0.5) { stroke_bounds }
 	font_size 8
-	pdf.text "Ученикът #{@record.properties["Собствено име".to_sym]} #{@record.properties["Бащино име".to_sym]} #{@record.properties["Фамилно име".to_sym]} със входящ номер: #{@record.entry_number}, подаде заявление за състезателен изпит по математика и кандидатстване в Технологично училище „Електронни системи” към Техническия университет – София и заяви  следните желания за подредба на специалностите при класирането:", :align => :justify
+	pdf.text "Ученикът #{@record.properties["Собствено име".to_sym]} #{@record.properties["Бащино име".to_sym]} #{@record.properties["Фамилно име".to_sym]}", :align => :justify
+
+	font_size 12
+	pdf.text "със входящ номер: #{@record.entry_number},", :align => :justify
+	
+	font_size 8 
+	pdf.text "подаде заявление за състезателен изпит по математика и кандидатстване в Технологично училище „Електронни системи” към Техническия университет – София и заяви  следните желания за подредба на специалностите при класирането:", :align => :justify
 
 	move_down 10
 
