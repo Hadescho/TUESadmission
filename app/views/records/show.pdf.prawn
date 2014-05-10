@@ -94,11 +94,9 @@ bounding_box([370, -90], :width => 330, :height => 220) do
 	
 	bounding_box([10, 200], :width => 120, :height => 150) do
 		transparent(0.5) { stroke_bounds }
-		pdf.text "Снимка на"
-		pdf.text "ученика."
 	end
 
-	bounding_box([140, 200], :width => 180, :height => 150) do
+	bounding_box([200, 200], :width => 180, :height => 150) do
 		#transparent(0.5) { stroke_bounds }
 		font_size 12
 		pdf.text "Входящ №: #{@record.entry_number}"
@@ -111,7 +109,7 @@ bounding_box([370, -90], :width => 330, :height => 220) do
 		move_down 10
 	end
 
-	bounding_box([10, 40], :width => 300, :height => 40) do
+	bounding_box([10, 10], :width => 300, :height => 40) do
 		#transparent(0.5) { stroke_bounds }
 		font_size 8
 		pdf.text "Приемен изпит : 31.05.2014 г. Местата се заемат до 7:30 ч."

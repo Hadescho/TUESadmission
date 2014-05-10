@@ -8,6 +8,7 @@ Admission::Application.routes.draw do
     resources :records
   end
 
+  # match 'campaigns/:campaign_id/search' => "campaigns#search",  via: :post
   match "campaigns/:campaign_id/edit/records" => "campaigns#modify_records", via: :put
 
   root to:"campaigns#index"

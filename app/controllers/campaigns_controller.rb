@@ -70,5 +70,16 @@ class CampaignsController < ApplicationController
     end
     redirect_to Campaign.find(params[:campaign_id])
   end
+
+  # def search 
+  #   records = Record.search params[:search]
+  #   respond_to do |format|
+  #    if records.nil? || records.empty?
+  #    format.html {redirect_to :back, notice: "Нищо не беше открито" }
+  #     else
+  #    format.html {render "search_result"}
+  #    end
+  #   end
+  # end
   
 end

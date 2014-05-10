@@ -5,10 +5,9 @@ class Record < ActiveRecord::Base
   belongs_to :record_type
   belongs_to :campaign
   serialize :properties, Hash
-  #validate :validate_properties
 
   before_save :calculate_bal
-
+  before_update :calculate_bal
 
   #def validate_properties
   #	record_type.fields.each do |field|
@@ -17,6 +16,12 @@ class Record < ActiveRecord::Base
   #		end
   #	end
   #end
+
+  # def self.search(search)
+  #   return if search.blank?
+  #   search_condition = "%" + search + "%"
+  #   find(:all, :conditions => ['#{self.properties["Собствено име".to_sym]} LIKE ?', search_condition])
+  # end
 
   def calculate_bal
     bel_school = self.properties["БЕЛ - училище".to_sym].to_f

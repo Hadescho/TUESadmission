@@ -1,67 +1,19 @@
-<!--<table>
-	<tr>
-		<td>
-		
-		</td>
-		<div class="well"></div>
-		<td>
-		<% @record.properties.each do |key,value| %>
-		<div class="row">
-			<div class="col-lg-3"></div>
-			
-			<div class="col-lg-6">
-				<div class="col-lg-6">
-					<h1><small><%= key %>: </small></h1>
-				</div>
-				<div class="col-lg-6">	
-					<%= value %>
-				</div>
-			</div>		
-			
-			
-			<div class="col-lg-3"></div>
-		</div>
-		<% end %>
-
-		<%= link_to "Генерирай документ", 
-			request.url + '.pdf' 
-		%> <br><br>
-				
-		<%= link_to "Промени", 
-			root_url + "campaigns/#{@record.campaign_id}/records/#{@record.id}/edit", 
-			method: "update"
-		%> <br><br>
-
-		<%= link_to "Назад", 
-			:back
-		%> <br><br>
-
-		<% if @record.id != nil %>
-      		<%= button_to "Изтрий", 
-      			campaign_record_path(@record.campaign_id), 
-      			:method=>:delete, 
-      			:class=>:destroy,
-      			:confirm=>"Сигурни ли сте?" 
-      		%>
-		<% end %>
-	
-		</td>
-	</tr>	
-
-</table>
-
--->	
 <div class="well container" style="margin-top: 25px;">
 		<div class="col-lg-8">
 			<% @record.properties.each do |key,value| %>
-			<div class="row" style="margin:5px;">
-				<div class="col-lg-1"></div>
-				<div class="col-lg-2">
-					<h1><small style="font-size:12px"> <%= key %>: </small></h1> 
+				<% next if key.to_s == "bal" and value.to_f < 15.0%>	
+				<div class="row" style="margin:5px;">
+					<div class="col-lg-1"></div>
+					<div class="col-lg-2">
+					<% if key.to_s == "bal"%>
+						<h1><small style="font-size:12px"> БАЛ: </small></h1>
+					<%else%>
+						<h1><small style="font-size:12px"> <%= key %>: </small></h1>
+					<%end%> 
+					</div>
+					<div class="col-lg-4"><p> <%=value%> </p></div>
+					<div class="col-lg-1"></div>
 				</div>
-				<div class="col-lg-4"><p> <%=value%> </p></div>
-				<div class="col-lg-1"></div>
-			</div>
 			<% end %>
 		</div>
 

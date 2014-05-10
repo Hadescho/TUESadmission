@@ -9,7 +9,7 @@
 			<li><%= link_to "Генерирай xls файл", root_url + "campaigns/#{@campaign.id}.xls"%></li>
 		</ul>
 	</section>
-	
+
 	<table id="campaign-records">
 		<thead>
 			<tr>
@@ -41,7 +41,8 @@
 			<% @campaign.records.each do |record| %>
 			<tr>
 				<td><%= check_box_tag 'record_ids[]', record.id %></td>
-				<td><%= record.id %> </td>
+				<td><%= record.entry_number %> </td>
+				<% record.destroy if record.properties.count == 1 %>
 				<% record.properties.each do |key,value| %>
 					<%if (key =~ /Бащино име/)|| 
 							(key =~ /Собствено име/) || 

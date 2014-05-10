@@ -10,26 +10,18 @@
 </head>
 <body>
   <header>
-    <div class="right">
+    <div class="left">
       <nav>
         <ul>
         <%if user_signed_in? %>
           <li class="user-auth"><%= current_user.email %></li>
-          <li class="user-auth"><%= link_to "Изход", destroy_user_session_path, method: :delete%></li>
+          <!--<li class="user-auth"><%= link_to "Изход", destroy_user_session_path, method: :delete%></li>-->
+          <li class="user-auth"><%=link_to "Home", root_url%></li>
         <% else %>
           <li class="user-auth"><%= link_to "Вход", new_user_session_path %></li>
         <% end %>
         </ul>
       </nav>
-    </div>
-
-    <div class="left">
-      <h1>ELSYS Admission</h1>
-      <div class="campaign-select">
-        <% campaigns_names = []; campaigns_ids = [] %>
-        <% Campaign.all.each {|c| campaigns_names<< [c.name,c.id]} %>
-        <%= select_tag "campaigns", options_for_select(campaigns_names,campaigns_ids), onchange:"document.location = '/campaigns/' + this.value" %>
-      </div>
     </div>
 
     <div class="clear"></div>
