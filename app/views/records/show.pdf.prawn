@@ -54,8 +54,8 @@ bounding_box([0, -160], :width => 330, :height => 240) do
 	
 	move_down 10
 
-	pdf.text "1.СП (Системно програмиране)" 
-	pdf.text "2.КМ (Компютърни мрежи)"
+	pdf.text "1. #{@record.properties["Желание1".to_sym]}" 
+	pdf.text "2. #{@record.properties["Желание2".to_sym]}"
 end
 
 bounding_box([0, -410], :width => 330, :height => 50) do
@@ -142,8 +142,8 @@ bounding_box([380, -410], :width => 330, :height => 150) do
 	move_down 10
 
 	font_size 10
-	pdf.text "1. СП (Системно програмиране)"
-	pdf.text "2. КМ (Компютърни мрежи)"
+	pdf.text "1. #{@record.properties["Желание1".to_sym]}"
+	pdf.text "2. #{@record.properties["Желание2".to_sym]}"
 
 	move_down 10
 
