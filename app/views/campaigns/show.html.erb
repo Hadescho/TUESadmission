@@ -42,7 +42,7 @@
 			<tr>
 				<td><%= check_box_tag 'record_ids[]', record.id %></td>
 				<td><%= record.entry_number %> </td>
-				<% record.destroy if record.properties.count == 1 %>
+			
 				<% record.properties.each do |key,value| %>
 					<%if (key =~ /Бащино име/)|| 
 							(key =~ /Собствено име/) || 

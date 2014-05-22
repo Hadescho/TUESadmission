@@ -35,14 +35,14 @@
 			<%= link_to "Към кампанията", root_url + "campaigns/#{@record.campaign_id}"%>
 		</div><br />
 		
-		<!--	<% if @record.id != nil %>
+		<% if @record.id != nil %>
 	      		<%= button_to "Изтрий", 
 	      			campaign_record_path(@record.campaign_id), 
 	      			:method=>:delete, 
 	      			:class=>:destroy,
 	      			:confirm=>"Сигурни ли сте?" 
 	      		%>
-			<% end %>-->
+		<% end %>
 		<br />
 
 	</div>
