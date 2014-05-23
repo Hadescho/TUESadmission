@@ -3,6 +3,8 @@ Admission::Application.routes.draw do
  
   devise_for :users
 
+  match "campaigns/:campaign_id/records/new" => "records#create", via: :post 
+
   resources :record_types
   resources :campaigns do
     resources :records
