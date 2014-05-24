@@ -21,30 +21,32 @@ class RecordsController < ApplicationController
     @record = @campaign.records.new
     @record.record_type_id = @campaign.record_type_id
     @record.campaign_id = @campaign.id
-    @record.entry_number = Record.where(campaign_id: @campaign.id).all.count + 1
+    # @record.entry_number = Record.where(campaign_id: @campaign.id).all.count + 1
     #the entry number is calculated
     #by adding 1 to the quantity of the campaign records
   end
 
   def create
-    @campaign = Campaign.find(params[:campaign_id])
-    @record = @campaign.records.new
-    @record.campaign_id = @campaign.id
-    @record.record_type_id = @campaign.record_type_id
+    Campaign.transaction do
+      @campaign = Campaign.find(params[:campaign_id])
+      @record = @campaign.records.new
+      @record.campaign_id = @campaign.id
+      @record.record_type_id = @campaign.record_type_id
 
-    if !@campaign.records.empty?
-      @record.entry_number = @campaign.records.count + 1
-    else
-      @record.entry_number = 1
-    end
+      if !@campaign.records.empty?
+        @record.entry_number = @campaign.records.count + 1
+      else
+        @record.entry_number = 1
+      end
 
-    @record.properties = params[:record][:properties]
-    
-    if @campaign.records << @record
-      redirect_to campaign_record_path(campaign_id: @campaign.id, id: @record.id)
-    else
-      render action: "new"
-      flash[:alert] = "Записът не бе създанен успешно. Моля опитайте отново."
+      @record.properties = params[:record][:properties]
+      
+      if @campaign.records << @record
+        redirect_to campaign_record_path(campaign_id: @campaign.id, id: @record.id)
+      else
+        render action: "new"
+        flash[:alert] = "Записът не бе създанен успешно. Моля опитайте отново."
+      end
     end
   end
 
