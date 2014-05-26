@@ -4,7 +4,7 @@ Admission::Application.routes.draw do
   devise_for :users
 
   match "campaigns/:campaign_id/records/new" => "records#create", via: :post 
-
+  match "campaigns/:campaign_id/records/:record_id/edit" => "records#update", via: :post
   resources :record_types
   resources :campaigns do
     resources :records

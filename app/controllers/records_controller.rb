@@ -12,8 +12,8 @@ class RecordsController < ApplicationController
   end
 
   def edit
-    @record = Record.find(params[:id])
     @campaign = Campaign.find(params[:campaign_id])
+    @record = Record.find(params[:id])
   end
 
   def new
@@ -21,9 +21,6 @@ class RecordsController < ApplicationController
     @record = @campaign.records.new
     @record.record_type_id = @campaign.record_type_id
     @record.campaign_id = @campaign.id
-    # @record.entry_number = Record.where(campaign_id: @campaign.id).all.count + 1
-    #the entry number is calculated
-    #by adding 1 to the quantity of the campaign records
   end
 
   def create
@@ -52,7 +49,7 @@ class RecordsController < ApplicationController
 
   def update
     @campaign = Campaign.find(params[:campaign_id])
-    @record = Record.find(params[:id])
+    @record = Record.find(params[:record_id])
     if @record.update_attributes(params[:record])
       redirect_to @campaign
     else
