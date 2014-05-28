@@ -10,11 +10,11 @@ class Campaign < ActiveRecord::Base
 			array = ""
 			
 			records.first.attributes.each_key do |key|
-				array << key + "," unless key =~ /properties/
+				array << key.to_s + "," unless key =~ /properties/
 			end
 
 			records.first.attributes["properties"].each_key do |key|
-				array << key + ","	
+				array << key.to_s + ","	
 			end
 
 			array = array[0..array.length-2].chomp
