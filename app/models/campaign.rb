@@ -6,13 +6,36 @@ class Campaign < ActiveRecord::Base
 	has_and_belongs_to_many :cn_container, class_name:"Record", join_table: :cn_records
 
 	def to_csv
-		CSV.generate do |csv|
+		csv = CSV.generate( :quote_char => "\0") do |csv|
+			array = ""
+			
+			records.first.attributes.each_key do |key|
+				array << key + "," unless key =~ /properties/
+			end
+
+			records.first.attributes["properties"].each_key do |key|
+				array << key + ","	
+			end
+
+			array = array[0..array.length-2].chomp
+			
+			csv << [array.strip]
+
 			self.records.each do |record|
-				record.attributes.each do |atrb|
-					csv << atrb
+				array = ""
+				record.attributes.each do |key, value|
+					array << value.to_s + "," unless key =~ /properties/
 				end
+				record.attributes["properties"].each do |key,value|
+					array << value.to_s + ","
+				end
+
+				array = array[0..array.length-2].chomp
+			
+				csv << [array]
 			end
 		end
+		csv.gsub!(/\0/, '')
 	end
 	
 	def bal_aligment 
